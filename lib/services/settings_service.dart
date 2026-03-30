@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,12 +15,12 @@ class PlantProfile {
 
 class SettingsService extends ChangeNotifier {
   static const List<PlantProfile> plantProfiles = [
-    PlantProfile(id: 'general',    name: 'General',    emoji: '🌱', moistureThreshold: 25, idealMoisture: 60),
-    PlantProfile(id: 'tomato',     name: 'Tomato',     emoji: '🍅', moistureThreshold: 40, idealMoisture: 70),
-    PlantProfile(id: 'rose',       name: 'Rose',       emoji: '🌹', moistureThreshold: 35, idealMoisture: 65),
-    PlantProfile(id: 'cactus',     name: 'Cactus',     emoji: '🌵', moistureThreshold: 10, idealMoisture: 20),
-    PlantProfile(id: 'lawn',       name: 'Lawn',       emoji: '🌿', moistureThreshold: 30, idealMoisture: 55),
-    PlantProfile(id: 'vegetables', name: 'Vegetables', emoji: '🥦', moistureThreshold: 45, idealMoisture: 75),
+    PlantProfile(id: 'general',    name: 'General',    emoji: 'ðŸŒ±', moistureThreshold: 25, idealMoisture: 60),
+    PlantProfile(id: 'tomato',     name: 'Tomato',     emoji: 'ðŸ…', moistureThreshold: 40, idealMoisture: 70),
+    PlantProfile(id: 'rose',       name: 'Rose',       emoji: 'ðŸŒ¹', moistureThreshold: 35, idealMoisture: 65),
+    PlantProfile(id: 'cactus',     name: 'Cactus',     emoji: 'ðŸŒµ', moistureThreshold: 10, idealMoisture: 20),
+    PlantProfile(id: 'lawn',       name: 'Lawn',       emoji: 'ðŸŒ¿', moistureThreshold: 30, idealMoisture: 55),
+    PlantProfile(id: 'vegetables', name: 'Vegetables', emoji: 'ðŸ¥¦', moistureThreshold: 45, idealMoisture: 75),
   ];
 
   bool _isDarkMode = false;
@@ -47,8 +51,8 @@ class SettingsService extends ChangeNotifier {
       orElse: () => plantProfiles.first);
 
   String formatTemp(double c) => _tempUnit == 'C'
-      ? '${c.toStringAsFixed(1)}°C'
-      : '${(c * 9 / 5 + 32).toStringAsFixed(1)}°F';
+      ? '${c.toStringAsFixed(1)}Â°C'
+      : '${(c * 9 / 5 + 32).toStringAsFixed(1)}Â°F';
   String formatVolume(double l) => _volumeUnit == 'L'
       ? '${l.toStringAsFixed(1)}L'
       : '${(l * 0.264172).toStringAsFixed(2)}gal';
@@ -93,3 +97,4 @@ class SettingsService extends ChangeNotifier {
   void setTempUnit(String v)      { _tempUnit = v; _save(); notifyListeners(); }
   void setVolumeUnit(String v)    { _volumeUnit = v; _save(); notifyListeners(); }
 }
+

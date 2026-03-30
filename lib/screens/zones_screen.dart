@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/irrigation_service.dart';
@@ -48,8 +52,8 @@ class ZonesScreen extends StatelessWidget {
 
   void _showAddZoneDialog(BuildContext context, IrrigationService svc) {
     final nameCtrl = TextEditingController();
-    String selectedEmoji = '🌱';
-    final emojis = ['🌱', '🌿', '🥦', '🌻', '🌷', '🌳', '🍅', '🌵'];
+    String selectedEmoji = 'ðŸŒ±';
+    final emojis = ['ðŸŒ±', 'ðŸŒ¿', 'ðŸ¥¦', 'ðŸŒ»', 'ðŸŒ·', 'ðŸŒ³', 'ðŸ…', 'ðŸŒµ'];
 
     showDialog(
       context: context,
@@ -165,7 +169,7 @@ class _EmptyZones extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text('🌱', style: TextStyle(fontSize: 60)),
+          const Text('ðŸŒ±', style: TextStyle(fontSize: 60)),
           const SizedBox(height: 16),
           Text('No zones yet!',
               style: TextStyle(
@@ -412,3 +416,4 @@ class _ZoneCard extends StatelessWidget {
     );
   }
 }
+

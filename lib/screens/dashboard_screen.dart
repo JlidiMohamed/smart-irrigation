@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/irrigation_service.dart';
@@ -21,7 +25,7 @@ class DashboardScreen extends StatelessWidget {
       backgroundColor: context.scaffoldBg,
       body: CustomScrollView(
         slivers: [
-          // ── Gradient App Bar ─────────────────────────
+          // â”€â”€ Gradient App Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
           SliverAppBar(
             expandedHeight: 200,
             pinned: true,
@@ -44,7 +48,7 @@ class DashboardScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                              Text("Hey $name 👋",
+                              Text("Hey $name ðŸ‘‹",
                                   style: const TextStyle(color: Color(0xFF86EFAC),
                                       fontSize: 13, fontWeight: FontWeight.w600)),
                               const Text("Smart Irrigation",
@@ -73,7 +77,7 @@ class DashboardScreen extends StatelessWidget {
                                           ? Colors.white : Colors.white.withOpacity(0.5),
                                     )),
                                 const SizedBox(width: 6),
-                                Text(svc.isIrrigating ? "Running 💧" : "Standby",
+                                Text(svc.isIrrigating ? "Running ðŸ’§" : "Standby",
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 12,
                                         fontWeight: FontWeight.w700)),
@@ -84,15 +88,15 @@ class DashboardScreen extends StatelessWidget {
                         const SizedBox(height: 20),
                         // Quick stats row
                         Row(children: [
-                          _QuickStat(icon: "💧",
+                          _QuickStat(icon: "ðŸ’§",
                               value: "${svc.totalWaterThisWeek.toStringAsFixed(0)}L",
                               label: "This week"),
                           const SizedBox(width: 12),
-                          _QuickStat(icon: "🔄",
+                          _QuickStat(icon: "ðŸ”„",
                               value: "${svc.irrigationCountThisWeek}",
                               label: "Sessions"),
                           const SizedBox(width: 12),
-                          _QuickStat(icon: "📅",
+                          _QuickStat(icon: "ðŸ“…",
                               value: "${svc.schedules.where((s) => s.isActive).length}",
                               label: "Active plans"),
                         ]),
@@ -110,7 +114,7 @@ class DashboardScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ── Section title ─────────────────────
+                  // â”€â”€ Section title â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   Row(children: [
                     Container(width: 4, height: 20,
                         decoration: BoxDecoration(
@@ -128,13 +132,13 @@ class DashboardScreen extends StatelessWidget {
                         color: const Color(0xFFDCFCE7),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Text("Live ●", style: TextStyle(
+                      child: const Text("Live â—", style: TextStyle(
                           color: Color(0xFF16A34A), fontSize: 10, fontWeight: FontWeight.w700)),
                     ),
                   ]),
                   const SizedBox(height: 12),
 
-                  // ── Weather widget ────────────────────
+                  // â”€â”€ Weather widget â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   Container(
                     padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
@@ -159,7 +163,7 @@ class DashboardScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
 
-                  // ── Alert banner ──────────────────────
+                  // â”€â”€ Alert banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   if (svc.soilMoisture < 25) ...[
                     Container(
                       padding: const EdgeInsets.symmetric(
@@ -170,7 +174,7 @@ class DashboardScreen extends StatelessWidget {
                         border: Border.all(color: Colors.red.shade200),
                       ),
                       child: Row(children: [
-                        const Text("🚨", style: TextStyle(fontSize: 20)),
+                        const Text("ðŸš¨", style: TextStyle(fontSize: 20)),
                         const SizedBox(width: 10),
                         Expanded(child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +184,7 @@ class DashboardScreen extends StatelessWidget {
                                       color: Colors.red.shade700,
                                       fontWeight: FontWeight.w800,
                                       fontSize: 13)),
-                              Text("Soil is at ${svc.soilMoisture.toStringAsFixed(0)}% — irrigation recommended.",
+                              Text("Soil is at ${svc.soilMoisture.toStringAsFixed(0)}% â€” irrigation recommended.",
                                   style: TextStyle(
                                       color: Colors.red.shade500,
                                       fontSize: 11)),
@@ -212,7 +216,7 @@ class DashboardScreen extends StatelessWidget {
                         border: Border.all(color: Colors.orange.shade200),
                       ),
                       child: Row(children: [
-                        const Text("⚠️", style: TextStyle(fontSize: 20)),
+                        const Text("âš ï¸", style: TextStyle(fontSize: 20)),
                         const SizedBox(width: 10),
                         Expanded(child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,7 +226,7 @@ class DashboardScreen extends StatelessWidget {
                                       color: Colors.orange.shade700,
                                       fontWeight: FontWeight.w800,
                                       fontSize: 13)),
-                              Text("Humidity at ${svc.humidity.toStringAsFixed(0)}% — monitor closely.",
+                              Text("Humidity at ${svc.humidity.toStringAsFixed(0)}% â€” monitor closely.",
                                   style: TextStyle(
                                       color: Colors.orange.shade600,
                                       fontSize: 11)),
@@ -232,10 +236,10 @@ class DashboardScreen extends StatelessWidget {
                     const SizedBox(height: 12),
                   ],
 
-                  // ── Sensors ───────────────────────────
+                  // â”€â”€ Sensors â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   Row(children: [
                     Expanded(child: SensorCard(
-                      label: "Humidity", emoji: "💧",
+                      label: "Humidity", emoji: "ðŸ’§",
                       value: "${svc.humidity.toStringAsFixed(1)}%",
                       progress: svc.humidity / 100,
                       gradientColors: const [Color(0xFF0EA5E9), Color(0xFF0369A1)],
@@ -243,15 +247,15 @@ class DashboardScreen extends StatelessWidget {
                     )),
                     const SizedBox(width: 10),
                     Expanded(child: SensorCard(
-                      label: "Temp", emoji: "🌡️",
-                      value: "${svc.temperature.toStringAsFixed(1)}°",
+                      label: "Temp", emoji: "ðŸŒ¡ï¸",
+                      value: "${svc.temperature.toStringAsFixed(1)}Â°",
                       progress: svc.temperature / 50,
                       gradientColors: const [Color(0xFFF97316), Color(0xFFEA580C)],
                       bgColor: context.isDark ? const Color(0xFF2A1E10) : const Color(0xFFFFF7ED),
                     )),
                     const SizedBox(width: 10),
                     Expanded(child: SensorCard(
-                      label: "Soil", emoji: "🌿",
+                      label: "Soil", emoji: "ðŸŒ¿",
                       value: "${svc.soilMoisture.toStringAsFixed(1)}%",
                       progress: svc.soilMoisture / 100,
                       gradientColors: const [Color(0xFF22C55E), Color(0xFF16A34A)],
@@ -259,7 +263,7 @@ class DashboardScreen extends StatelessWidget {
                     )),
                   ]),
 
-                  // ── Efficiency Score ──────────────────
+                  // â”€â”€ Efficiency Score â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   const SizedBox(height: 22),
                   Row(children: [
                     Container(width: 4, height: 20, decoration: BoxDecoration(color: const Color(0xFF8B5CF6), borderRadius: BorderRadius.circular(2))),
@@ -271,7 +275,7 @@ class DashboardScreen extends StatelessWidget {
 
                   const SizedBox(height: 22),
 
-                  // ── Control panel ─────────────────────
+                  // â”€â”€ Control panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   Row(children: [
                     Container(width: 4, height: 20,
                         decoration: BoxDecoration(color: const Color(0xFFF97316),
@@ -363,3 +367,4 @@ class _EfficiencyCard extends StatelessWidget {
     );
   }
 }
+

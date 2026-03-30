@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +53,7 @@ class _ControlPanelState extends State<ControlPanel>
         ],
       ),
       child: Column(children: [
-        // ── Big animated button ──────────────────────
+        // â”€â”€ Big animated button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         GestureDetector(
           onTap: () {
             HapticFeedback.mediumImpact();
@@ -101,7 +105,7 @@ class _ControlPanelState extends State<ControlPanel>
                   AnimatedSwitcher(
                     duration: const Duration(milliseconds: 300),
                     child: Text(
-                      svc.isIrrigating ? "💧" : "▶",
+                      svc.isIrrigating ? "ðŸ’§" : "â–¶",
                       key: ValueKey(svc.isIrrigating),
                       style: TextStyle(
                         fontSize: svc.isIrrigating ? 34 : 28,
@@ -125,7 +129,7 @@ class _ControlPanelState extends State<ControlPanel>
 
         const SizedBox(height: 16),
 
-        // ── Status ────────────────────────────────────
+        // â”€â”€ Status â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           child: svc.isIrrigating
@@ -156,7 +160,7 @@ class _ControlPanelState extends State<ControlPanel>
                       color: const Color(0xFFDCFCE7),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Text("🌱 Watering your garden...",
+                    child: const Text("ðŸŒ± Watering your garden...",
                         style: TextStyle(color: Color(0xFF16A34A),
                             fontSize: 12, fontWeight: FontWeight.w600)),
                   ),
@@ -201,3 +205,4 @@ class _ControlPanelState extends State<ControlPanel>
     );
   }
 }
+

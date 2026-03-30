@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/auth_service.dart';
@@ -54,10 +58,10 @@ class _SignupScreenState extends State<SignupScreen>
 
   String get _strengthLabel {
     final s = _strength;
-    if (s <= 0.25) return "Weak 😬";
-    if (s <= 0.5) return "Fair 🙂";
-    if (s <= 0.75) return "Good 😎";
-    return "Strong 💪";
+    if (s <= 0.25) return "Weak ðŸ˜¬";
+    if (s <= 0.5) return "Fair ðŸ™‚";
+    if (s <= 0.75) return "Good ðŸ˜Ž";
+    return "Strong ðŸ’ª";
   }
 
   Future<void> _signup() async {
@@ -101,7 +105,7 @@ class _SignupScreenState extends State<SignupScreen>
                   color: const Color(0xFF22C55E).withOpacity(0.4),
                   blurRadius: 20, spreadRadius: 2)],
               ),
-              child: const Center(child: Text("🎉", style: TextStyle(fontSize: 34))),
+              child: const Center(child: Text("ðŸŽ‰", style: TextStyle(fontSize: 34))),
             ),
             const SizedBox(height: 20),
             const Text("Account Created!", style: TextStyle(
@@ -142,7 +146,7 @@ class _SignupScreenState extends State<SignupScreen>
                       color: const Color(0xFF22C55E).withOpacity(0.4),
                       blurRadius: 12, offset: const Offset(0, 4))],
                 ),
-                child: const Center(child: Text("Go to Sign In →",
+                child: const Center(child: Text("Go to Sign In â†’",
                     style: TextStyle(color: Colors.white,
                         fontWeight: FontWeight.w800, fontSize: 15))),
               ),
@@ -209,7 +213,7 @@ class _SignupScreenState extends State<SignupScreen>
                             color: const Color(0xFF22C55E).withOpacity(0.45),
                             blurRadius: 20, spreadRadius: 2)],
                       ),
-                      child: const Center(child: Text("🌱", style: TextStyle(fontSize: 32))),
+                      child: const Center(child: Text("ðŸŒ±", style: TextStyle(fontSize: 32))),
                     ),
                   ]),
                 ),
@@ -244,14 +248,14 @@ class _SignupScreenState extends State<SignupScreen>
                     ]),
                     const SizedBox(height: 22),
 
-                    _Field(ctrl: _nameCtrl, label: "Full Name 🙋", hint: "Your name",
+                    _Field(ctrl: _nameCtrl, label: "Full Name ðŸ™‹", hint: "Your name",
                         icon: Icons.badge_rounded),
                     const SizedBox(height: 14),
-                    _Field(ctrl: _emailCtrl, label: "Email 📬", hint: "you@example.com",
+                    _Field(ctrl: _emailCtrl, label: "Email ðŸ“¬", hint: "you@example.com",
                         icon: Icons.alternate_email_rounded, type: TextInputType.emailAddress),
                     const SizedBox(height: 14),
                     _Field(
-                      ctrl: _passCtrl, label: "Password 🔑", hint: "Min. 6 characters",
+                      ctrl: _passCtrl, label: "Password ðŸ”‘", hint: "Min. 6 characters",
                       icon: Icons.lock_rounded, obscure: _obscureP,
                       onChanged: (_) => setState(() {}),
                       suffix: GestureDetector(
@@ -281,7 +285,7 @@ class _SignupScreenState extends State<SignupScreen>
 
                     const SizedBox(height: 14),
                     _Field(
-                      ctrl: _confirmCtrl, label: "Confirm Password ✅",
+                      ctrl: _confirmCtrl, label: "Confirm Password âœ…",
                       hint: "Repeat password", icon: Icons.lock_clock_rounded,
                       obscure: _obscureC,
                       suffix: GestureDetector(
@@ -327,7 +331,7 @@ class _SignupScreenState extends State<SignupScreen>
                             : const Row(mainAxisSize: MainAxisSize.min, children: [
                                 Text("Let's start! ", style: TextStyle(color: Colors.white,
                                     fontSize: 16, fontWeight: FontWeight.w800)),
-                                Text("🎉", style: TextStyle(fontSize: 16)),
+                                Text("ðŸŽ‰", style: TextStyle(fontSize: 16)),
                               ])),
                       ),
                     ),
@@ -337,7 +341,7 @@ class _SignupScreenState extends State<SignupScreen>
                         style: TextStyle(color: Colors.grey.shade500, fontSize: 13))),
                     Center(child: GestureDetector(
                       onTap: () => Navigator.pop(context),
-                      child: const Text("Sign In →",
+                      child: const Text("Sign In â†’",
                           style: TextStyle(color: Color(0xFF16A34A),
                               fontWeight: FontWeight.w700, fontSize: 13)),
                     )),
@@ -400,3 +404,4 @@ class _Field extends StatelessWidget {
     ],
   );
 }
+

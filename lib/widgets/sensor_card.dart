@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 
 class SensorCard extends StatelessWidget {
@@ -84,3 +88,4 @@ class SensorCard extends StatelessWidget {
     );
   }
 }
+

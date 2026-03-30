@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 import 'package:flutter/material.dart';
@@ -37,22 +41,22 @@ class NotificationService {
   }
 
   static void lowMoisture(double value) => show(
-    title: '⚠️ Sol trop sec',
-    body: 'Humidité du sol à ${value.toStringAsFixed(0)}% — irrigation recommandée.',
+    title: 'âš ï¸ Sol trop sec',
+    body: 'HumiditÃ© du sol Ã  ${value.toStringAsFixed(0)}% â€” irrigation recommandÃ©e.',
     tag: 'low_moisture',
   );
   static void autoIrrigationStarted() => show(
-    title: '💧 Irrigation automatique démarrée',
-    body: 'Le sol a atteint le seuil minimum. Irrigation en cours…',
+    title: 'ðŸ’§ Irrigation automatique dÃ©marrÃ©e',
+    body: 'Le sol a atteint le seuil minimum. Irrigation en coursâ€¦',
     tag: 'auto_started', debounce: false,
   );
   static void irrigationStopped(double liters) => show(
-    title: '✅ Irrigation terminée',
-    body: '${liters.toStringAsFixed(1)} L utilisés.',
+    title: 'âœ… Irrigation terminÃ©e',
+    body: '${liters.toStringAsFixed(1)} L utilisÃ©s.',
     tag: 'irrigation_done', debounce: false,
   );
   static void rainForecast() => show(
-    title: '🌧 Pluie prévue aujourd\'hui',
+    title: 'ðŸŒ§ Pluie prÃ©vue aujourd\'hui',
     body: 'L\'irrigation automatique est suspendue.',
     tag: 'rain_forecast',
   );
@@ -65,9 +69,9 @@ class NotificationService {
 
   static String get statusLabel {
     switch (permissionStatus) {
-      case 'granted': return 'Activées ✅';
-      case 'denied':  return 'Bloquées ❌';
-      default:        return 'Non demandées';
+      case 'granted': return 'ActivÃ©es âœ…';
+      case 'denied':  return 'BloquÃ©es âŒ';
+      default:        return 'Non demandÃ©es';
     }
   }
 
@@ -79,3 +83,4 @@ class NotificationService {
     }
   }
 }
+

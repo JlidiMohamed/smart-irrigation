@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 
 class SensorData {
@@ -58,7 +62,7 @@ class IrrigationZone {
   IrrigationZone({
     required this.id,
     required this.name,
-    this.emoji = '🌱',
+    this.emoji = 'ðŸŒ±',
     this.soilMoisture = 50.0,
     this.isActive = true,
   });
@@ -85,4 +89,5 @@ extension TimeOfDayFormat on TimeOfDay {
     return '$h:$m';
   }
 }
+
 

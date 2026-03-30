@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 import '../models/models.dart';
@@ -16,3 +20,4 @@ void exportCsv(List<IrrigationEvent> history) {
     ..click();
   html.Url.revokeObjectUrl(url);
 }
+

@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -46,3 +50,4 @@ extension AppColors on BuildContext {
   // Legacy alias
   Color get navBarBg => navBg;
 }
+

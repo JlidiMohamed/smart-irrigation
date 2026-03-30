@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +37,7 @@ class ScheduleScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      const Text("📅 Schedule",
+                      const Text("ðŸ“… Schedule",
                           style: TextStyle(color: Colors.white, fontSize: 22,
                               fontWeight: FontWeight.w900)),
                       Text("${svc.schedules.where((s) => s.isActive).length} active plans",
@@ -69,7 +73,7 @@ class ScheduleScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: const Color(0xFF16A34A),
         elevation: 6,
-        icon: const Text("➕", style: TextStyle(fontSize: 16)),
+        icon: const Text("âž•", style: TextStyle(fontSize: 16)),
         label: const Text("Add Schedule",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
         onPressed: () => _showAddDialog(context),
@@ -104,7 +108,7 @@ class ScheduleScreen extends StatelessWidget {
                   decoration: BoxDecoration(color: Colors.grey.shade300,
                       borderRadius: BorderRadius.circular(2)))),
               const SizedBox(height: 20),
-              const Text("New Schedule ✨",
+              const Text("New Schedule âœ¨",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900,
                       color: Color(0xFF052E16))),
               const SizedBox(height: 20),
@@ -122,7 +126,7 @@ class ScheduleScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               // Time
-              const Text("⏰ Time", style: TextStyle(fontWeight: FontWeight.w800,
+              const Text("â° Time", style: TextStyle(fontWeight: FontWeight.w800,
                   color: Color(0xFF052E16))),
               const SizedBox(height: 8),
               Row(children: [
@@ -156,7 +160,7 @@ class ScheduleScreen extends StatelessWidget {
 
               // Duration
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                const Text("⏱ Duration", style: TextStyle(fontWeight: FontWeight.w800,
+                const Text("â± Duration", style: TextStyle(fontWeight: FontWeight.w800,
                     color: Color(0xFF052E16))),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -174,7 +178,7 @@ class ScheduleScreen extends StatelessWidget {
               ),
 
               // Days
-              const Text("📆 Days", style: TextStyle(fontWeight: FontWeight.w800,
+              const Text("ðŸ“† Days", style: TextStyle(fontWeight: FontWeight.w800,
                   color: Color(0xFF052E16))),
               const SizedBox(height: 10),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -252,7 +256,7 @@ class ScheduleScreen extends StatelessWidget {
                           color: const Color(0xFF22C55E).withOpacity(0.4),
                           blurRadius: 12, offset: const Offset(0, 4))],
                     ),
-                    child: const Center(child: Text("Save Schedule 🎉",
+                    child: const Center(child: Text("Save Schedule ðŸŽ‰",
                         style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800))),
                   ),
                 )),
@@ -269,12 +273,12 @@ class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Center(
     child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      const Text("🌵", style: TextStyle(fontSize: 64)),
+      const Text("ðŸŒµ", style: TextStyle(fontSize: 64)),
       const SizedBox(height: 16),
       const Text("No schedules yet!", style: TextStyle(
           fontSize: 18, fontWeight: FontWeight.w800, color: Color(0xFF052E16))),
       const SizedBox(height: 6),
-      Text("Add your first irrigation plan ↓",
+      Text("Add your first irrigation plan â†“",
           style: TextStyle(color: Colors.grey.shade500, fontSize: 13)),
     ]),
   );
@@ -289,7 +293,7 @@ class _ScheduleCard extends StatelessWidget {
     final svc = context.read<IrrigationService>();
     final dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     final activeDays = schedule.days.asMap().entries
-        .where((e) => e.value).map((e) => dayLabels[e.key]).join(' · ');
+        .where((e) => e.value).map((e) => dayLabels[e.key]).join(' Â· ');
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -320,7 +324,7 @@ class _ScheduleCard extends StatelessWidget {
               boxShadow: schedule.isActive ? [BoxShadow(
                 color: const Color(0xFF22C55E).withOpacity(0.3), blurRadius: 8)] : [],
             ),
-            child: const Center(child: Text("⏰", style: TextStyle(fontSize: 24))),
+            child: const Center(child: Text("â°", style: TextStyle(fontSize: 24))),
           ),
           const SizedBox(width: 14),
 
@@ -329,7 +333,7 @@ class _ScheduleCard extends StatelessWidget {
             Text(schedule.name, style: const TextStyle(
                 fontWeight: FontWeight.w800, fontSize: 15, color: Color(0xFF052E16))),
             const SizedBox(height: 2),
-            Text("${schedule.time.fmt()} · ${schedule.durationMinutes} min",
+            Text("${schedule.time.fmt()} Â· ${schedule.durationMinutes} min",
                 style: TextStyle(color: Colors.grey.shade600, fontSize: 12,
                     fontWeight: FontWeight.w600)),
             if (activeDays.isNotEmpty) ...[
@@ -436,3 +440,4 @@ class _ScheduleCard extends StatelessWidget {
     );
   }
 }
+

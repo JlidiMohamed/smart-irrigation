@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -56,14 +60,14 @@ class IrrigationApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: settings.themeMode,
-      // AuthGate is ALWAYS home — it decides what to show
+      // AuthGate is ALWAYS home â€” it decides what to show
       home: AuthGate(showOnboarding: showOnboarding),
     );
   }
 }
 
-// ── AuthGate — single source of truth for routing ──────────────────────────
-// Always lives at the root. Decides: Onboarding → Login → MainShell
+// â”€â”€ AuthGate â€” single source of truth for routing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Always lives at the root. Decides: Onboarding â†’ Login â†’ MainShell
 class AuthGate extends StatefulWidget {
   final bool showOnboarding;
   const AuthGate({super.key, required this.showOnboarding});
@@ -89,7 +93,7 @@ class _AuthGateState extends State<AuthGate> {
   Widget build(BuildContext context) {
     final auth = context.watch<AuthService>();
 
-    // ── Logged in → MainShell ──────────────────────────────
+    // â”€â”€ Logged in â†’ MainShell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     if (auth.isLoggedIn) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
@@ -106,23 +110,23 @@ class _AuthGateState extends State<AuthGate> {
       return const MainShell();
     }
 
-    // ── Not logged in → clear Firestore connection ─────────
+    // â”€â”€ Not logged in â†’ clear Firestore connection â”€â”€â”€â”€â”€â”€â”€â”€â”€
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       context.read<IrrigationService>().clearUser();
     });
 
-    // ── Onboarding not done → show onboarding ─────────────
+    // â”€â”€ Onboarding not done â†’ show onboarding â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     if (!_onboardingDone) {
       return OnboardingScreen(onDone: _completeOnboarding);
     }
 
-    // ── Default → Login ────────────────────────────────────
+    // â”€â”€ Default â†’ Login â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     return const LoginScreen();
   }
 }
 
-// ── Main app shell with bottom navigation ──────────────────────────────────
+// â”€â”€ Main app shell with bottom navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class MainShell extends StatefulWidget {
   const MainShell({super.key});
   @override
@@ -174,3 +178,4 @@ class _MainShellState extends State<MainShell> {
     );
   }
 }
+

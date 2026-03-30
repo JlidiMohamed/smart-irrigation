@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/auth_service.dart';
@@ -75,23 +79,23 @@ class ProfileScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(children: [
-                // ── Stats ─────────────────────────────────
+                // â”€â”€ Stats â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 Row(children: [
-                  _StatBox(emoji: "💧",
+                  _StatBox(emoji: "ðŸ’§",
                       value: "${svc.totalWaterThisWeek.toStringAsFixed(1)}L",
                       label: "This week"),
                   const SizedBox(width: 10),
-                  _StatBox(emoji: "🔄",
+                  _StatBox(emoji: "ðŸ”„",
                       value: "${svc.irrigationCountThisWeek}",
                       label: "Sessions"),
                   const SizedBox(width: 10),
-                  _StatBox(emoji: "📅",
+                  _StatBox(emoji: "ðŸ“…",
                       value: "${svc.schedules.where((s) => s.isActive).length}",
                       label: "Active plans"),
                 ]),
                 const SizedBox(height: 20),
 
-                // ── Account section ───────────────────────
+                // â”€â”€ Account section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 _SectionHeader("Account"),
                 const SizedBox(height: 10),
                 _ActionTile(
@@ -117,7 +121,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // ── Support section ───────────────────────
+                // â”€â”€ Support section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 _SectionHeader("App"),
                 const SizedBox(height: 10),
                 _ActionTile(
@@ -136,7 +140,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // ── Logout ────────────────────────────────
+                // â”€â”€ Logout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 GestureDetector(
                   onTap: () => _confirmLogout(context, auth),
                   child: Container(
@@ -543,3 +547,4 @@ class _PassField extends StatelessWidget {
     ),
   );
 }
+

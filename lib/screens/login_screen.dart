@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/auth_service.dart';
@@ -192,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen>
                             blurRadius: 24, spreadRadius: 2,
                           )],
                         ),
-                        child: const Center(child: Text("💧", style: TextStyle(fontSize: 36))),
+                        child: const Center(child: Text("ðŸ’§", style: TextStyle(fontSize: 36))),
                       ),
                     ]),
                   ),
@@ -208,7 +212,7 @@ class _LoginScreenState extends State<LoginScreen>
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: const Color(0xFF22C55E).withOpacity(0.3)),
                     ),
-                    child: const Text("👋 Welcome back!", style: TextStyle(
+                    child: const Text("ðŸ‘‹ Welcome back!", style: TextStyle(
                         color: Color(0xFF86EFAC), fontSize: 12, fontWeight: FontWeight.w600)),
                   ),
 
@@ -299,7 +303,7 @@ class _LoginScreenState extends State<LoginScreen>
                                   Text("Let's go!", style: TextStyle(color: Colors.white,
                                       fontSize: 16, fontWeight: FontWeight.w800)),
                                   SizedBox(width: 8),
-                                  Text("🚀", style: TextStyle(fontSize: 16)),
+                                  Text("ðŸš€", style: TextStyle(fontSize: 16)),
                                 ])),
                         ),
                       ),
@@ -323,7 +327,7 @@ class _LoginScreenState extends State<LoginScreen>
                             borderRadius: BorderRadius.circular(14),
                             border: Border.all(color: const Color(0xFF86EFAC)),
                           ),
-                          child: const Center(child: Text("Create an account 🌱",
+                          child: const Center(child: Text("Create an account ðŸŒ±",
                               style: TextStyle(color: Color(0xFF14532D),
                                   fontWeight: FontWeight.w700, fontSize: 14))),
                         ),
@@ -345,7 +349,7 @@ class _LoginScreenState extends State<LoginScreen>
                         border: Border.all(color: Colors.white.withOpacity(0.15)),
                       ),
                       child: Row(children: [
-                        const Text("💡", style: TextStyle(fontSize: 14)),
+                        const Text("ðŸ’¡", style: TextStyle(fontSize: 14)),
                         const SizedBox(width: 8),
                         Text("Tap to use demo account",
                             style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 12)),
@@ -354,7 +358,7 @@ class _LoginScreenState extends State<LoginScreen>
                   ),
                   const SizedBox(height: 28),
 
-                  // ── Signature ──────────────────────────
+                  // â”€â”€ Signature â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   const _Signature(),
                   const SizedBox(height: 24),
                 ]),
@@ -429,3 +433,4 @@ class _FancyField extends StatelessWidget {
     ],
   );
 }
+

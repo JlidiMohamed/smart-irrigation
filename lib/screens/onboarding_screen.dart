@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,19 +19,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   static const List<_OnboardingSlide> _slides = [
     _OnboardingSlide(
-      emoji: '💧',
+      emoji: 'ðŸ’§',
       title: 'Smart Watering',
       subtitle:
           "Monitor your garden's soil moisture in real time and get alerts when it needs water.",
     ),
     _OnboardingSlide(
-      emoji: '📅',
+      emoji: 'ðŸ“…',
       title: 'Automated Schedules',
       subtitle:
-          "Set up irrigation plans that run automatically — even when you're away.",
+          "Set up irrigation plans that run automatically â€” even when you're away.",
     ),
     _OnboardingSlide(
-      emoji: '📊',
+      emoji: 'ðŸ“Š',
       title: 'Track & Optimize',
       subtitle:
           'Analyze your water usage, reduce waste, and improve efficiency over time.',
@@ -138,7 +142,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             child: const Center(
                               child: Text(
-                                'Get Started →',
+                                'Get Started â†’',
                                 style: TextStyle(
                                   color: Color(0xFF052E16),
                                   fontSize: 17,
@@ -164,7 +168,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             child: const Center(
                               child: Text(
-                                'Next →',
+                                'Next â†’',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 17,
@@ -177,7 +181,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                // ── Signature (last slide only) ──────────
+                // â”€â”€ Signature (last slide only) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 if (_currentPage == _slides.length - 1)
                   Column(children: [
                     Text('Designed & Developed by',
@@ -270,3 +274,4 @@ class _SlideWidget extends StatelessWidget {
     );
   }
 }
+

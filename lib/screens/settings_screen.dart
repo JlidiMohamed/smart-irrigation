@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/settings_service.dart';
@@ -33,7 +37,7 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // ── Appearance ──────────────────────────────────
+          // â”€â”€ Appearance â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
           _SectionTitle('Apparence', context),
           const SizedBox(height: 10),
 
@@ -109,7 +113,7 @@ class SettingsScreen extends StatelessWidget {
 
           const SizedBox(height: 22),
 
-          // ── Smart Irrigation ────────────────────────────
+          // â”€â”€ Smart Irrigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
           _SectionTitle('Smart Irrigation', context),
           const SizedBox(height: 10),
 
@@ -244,27 +248,27 @@ class SettingsScreen extends StatelessWidget {
                             runSpacing: 8,
                             children: const [
                               _PlantChipData(
-                                  emoji: '🌱',
+                                  emoji: 'ðŸŒ±',
                                   label: 'General',
                                   value: 'general'),
                               _PlantChipData(
-                                  emoji: '🍅',
+                                  emoji: 'ðŸ…',
                                   label: 'Tomato',
                                   value: 'tomato'),
                               _PlantChipData(
-                                  emoji: '🌹',
+                                  emoji: 'ðŸŒ¹',
                                   label: 'Rose',
                                   value: 'rose'),
                               _PlantChipData(
-                                  emoji: '🌵',
+                                  emoji: 'ðŸŒµ',
                                   label: 'Cactus',
                                   value: 'cactus'),
                               _PlantChipData(
-                                  emoji: '🌿',
+                                  emoji: 'ðŸŒ¿',
                                   label: 'Lawn',
                                   value: 'lawn'),
                               _PlantChipData(
-                                  emoji: '🥦',
+                                  emoji: 'ðŸ¥¦',
                                   label: 'Vegetables',
                                   value: 'vegetables'),
                             ].map((chip) {
@@ -319,7 +323,7 @@ class SettingsScreen extends StatelessWidget {
 
           const SizedBox(height: 22),
 
-          // ── Water Management ────────────────────────────
+          // â”€â”€ Water Management â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
           _SectionTitle('Water Management', context),
           const SizedBox(height: 10),
 
@@ -417,7 +421,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 22),
 
-          // ── Units ────────────────────────────────────────
+          // â”€â”€ Units â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
           _SectionTitle('Units', context),
           const SizedBox(height: 10),
           _SettingsCard(
@@ -430,7 +434,7 @@ class SettingsScreen extends StatelessWidget {
                     Expanded(child: Text(context.tr('temp_unit'),
                         style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, color: context.textPrimary))),
                     _TogglePair(
-                      first: '°C', second: '°F',
+                      first: 'Â°C', second: 'Â°F',
                       selectedFirst: settings.tempUnit == 'C',
                       onFirst: () => settings.setTempUnit('C'),
                       onSecond: () => settings.setTempUnit('F'),
@@ -458,14 +462,14 @@ class SettingsScreen extends StatelessWidget {
 
           const SizedBox(height: 22),
 
-          // ── Notifications ────────────────────────────────
+          // â”€â”€ Notifications â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
           _SectionTitle('Notifications', context),
           const SizedBox(height: 10),
           _NotificationCard(settings: settings),
 
           const SizedBox(height: 22),
 
-          // ── About ─────────────────────────────────────────
+          // â”€â”€ About â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
           _SectionTitle('About', context),
           const SizedBox(height: 10),
           _SettingsCard(
@@ -499,7 +503,7 @@ class SettingsScreen extends StatelessWidget {
                         colors: [Color(0xFF22C55E), Color(0xFF0EA5E9)]),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: const Text('© 2025', style: TextStyle(
+                  child: const Text('Â© 2025', style: TextStyle(
                       color: Colors.white, fontSize: 11, fontWeight: FontWeight.w700)),
                 ),
               ]),
@@ -559,7 +563,7 @@ class _TogglePair extends StatelessWidget {
   );
 }
 
-// ── Notification card with real browser permission status ────────────────────
+// â”€â”€ Notification card with real browser permission status â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class _NotificationCard extends StatefulWidget {
   final SettingsService settings;
   const _NotificationCard({required this.settings});
@@ -573,13 +577,13 @@ class _NotificationCardState extends State<_NotificationCard> {
   Future<void> _handleToggle() async {
     final current = widget.settings.notificationsEnabled;
     if (!current) {
-      // Turning ON → ask browser permission
+      // Turning ON â†’ ask browser permission
       setState(() => _requesting = true);
       final granted = await NotificationService.requestPermission();
       setState(() => _requesting = false);
       if (!granted && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: const Text('Autorisez les notifications dans les paramètres du navigateur.'),
+          content: const Text('Autorisez les notifications dans les paramÃ¨tres du navigateur.'),
           backgroundColor: Colors.orange.shade700,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -611,7 +615,7 @@ class _NotificationCardState extends State<_NotificationCard> {
                       style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15,
                           color: context.textPrimary)),
                   const SizedBox(height: 2),
-                  Text('Alertes sol sec, irrigation, pluie prévue',
+                  Text('Alertes sol sec, irrigation, pluie prÃ©vue',
                       style: TextStyle(fontSize: 11, color: context.textSecondary)),
                 ],
               )),
@@ -626,7 +630,7 @@ class _NotificationCardState extends State<_NotificationCard> {
                     ),
             ],
           ),
-          // ── Permission status badge ──
+          // â”€â”€ Permission status badge â”€â”€
           const SizedBox(height: 10),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -647,9 +651,9 @@ class _NotificationCardState extends State<_NotificationCard> {
                 const SizedBox(width: 8),
                 Expanded(child: Text(
                   isGranted
-                      ? 'Permission accordée — les notifications sont actives'
+                      ? 'Permission accordÃ©e â€” les notifications sont actives'
                       : isDenied
-                          ? 'Bloquées par le navigateur — cliquez sur 🔒 dans la barre d\'adresse pour autoriser'
+                          ? 'BloquÃ©es par le navigateur â€” cliquez sur ðŸ”’ dans la barre d\'adresse pour autoriser'
                           : 'Activez le toggle pour demander la permission',
                   style: TextStyle(fontSize: 11, color: NotificationService.statusColor,
                       fontWeight: FontWeight.w600),
@@ -657,13 +661,13 @@ class _NotificationCardState extends State<_NotificationCard> {
               ],
             ),
           ),
-          // ── Alert types ──
+          // â”€â”€ Alert types â”€â”€
           if (isGranted) ...[
             const SizedBox(height: 10),
-            _AlertRow(icon: '⚠️', label: 'Sol trop sec (< 20%)'),
-            _AlertRow(icon: '💧', label: 'Irrigation automatique démarrée'),
-            _AlertRow(icon: '✅', label: 'Irrigation terminée'),
-            _AlertRow(icon: '🌧', label: 'Pluie prévue aujourd\'hui'),
+            _AlertRow(icon: 'âš ï¸', label: 'Sol trop sec (< 20%)'),
+            _AlertRow(icon: 'ðŸ’§', label: 'Irrigation automatique dÃ©marrÃ©e'),
+            _AlertRow(icon: 'âœ…', label: 'Irrigation terminÃ©e'),
+            _AlertRow(icon: 'ðŸŒ§', label: 'Pluie prÃ©vue aujourd\'hui'),
           ],
         ],
       ),
@@ -826,7 +830,7 @@ class _WaterCostFieldState extends State<_WaterCostField> {
             const TextInputType.numberWithOptions(decimal: true),
         style: TextStyle(color: context.textPrimary),
         decoration: InputDecoration(
-          prefixText: '€ ',
+          prefixText: 'â‚¬ ',
           prefixStyle: TextStyle(
               color: context.textSecondary, fontWeight: FontWeight.w600),
           filled: true,
@@ -861,3 +865,4 @@ class _WaterCostFieldState extends State<_WaterCostField> {
         },
       );
 }
+

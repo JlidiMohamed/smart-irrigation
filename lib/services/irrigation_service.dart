@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/foundation.dart';
@@ -6,18 +10,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/models.dart';
 import 'notification_service.dart';
 
-// ═══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // Firestore structure:
-//   sensors/{uid}/latest/current     ← latest reading (realtime)
-//   sensors/{uid}/readings/{auto-id} ← sensor history archive
-//   history/{uid}/events/{auto-id}   ← irrigation events log
-// ═══════════════════════════════════════════════════════════════════
+//   sensors/{uid}/latest/current     â† latest reading (realtime)
+//   sensors/{uid}/readings/{auto-id} â† sensor history archive
+//   history/{uid}/events/{auto-id}   â† irrigation events log
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 class IrrigationService extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   String? _uid;
 
-  // ── Sensor state ──────────────────────────────────────────
+  // â”€â”€ Sensor state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   double _humidity     = 62.0;
   double _temperature  = 24.5;
   double _soilMoisture = 45.0;
@@ -26,7 +30,7 @@ class IrrigationService extends ChangeNotifier {
   double get temperature   => _temperature;
   double get soilMoisture  => _soilMoisture;
 
-  // ── Irrigation state ──────────────────────────────────────
+  // â”€â”€ Irrigation state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   bool _isIrrigating     = false;
   int  _remainingSeconds = 0;
   Timer? _irrigationTimer;
@@ -35,11 +39,11 @@ class IrrigationService extends ChangeNotifier {
   bool get isIrrigating     => _isIrrigating;
   int  get remainingSeconds => _remainingSeconds;
 
-  // ── Zones ─────────────────────────────────────────────────
+  // â”€â”€ Zones â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   final List<IrrigationZone> _zones = [
-    IrrigationZone(id: 'z1', name: 'Garden', emoji: '🌱', soilMoisture: 52.0),
-    IrrigationZone(id: 'z2', name: 'Lawn', emoji: '🌿', soilMoisture: 41.0),
-    IrrigationZone(id: 'z3', name: 'Vegetables', emoji: '🥦', soilMoisture: 68.0),
+    IrrigationZone(id: 'z1', name: 'Garden', emoji: 'ðŸŒ±', soilMoisture: 52.0),
+    IrrigationZone(id: 'z2', name: 'Lawn', emoji: 'ðŸŒ¿', soilMoisture: 41.0),
+    IrrigationZone(id: 'z3', name: 'Vegetables', emoji: 'ðŸ¥¦', soilMoisture: 68.0),
   ];
   List<IrrigationZone> get zones => List.unmodifiable(_zones);
 
@@ -50,7 +54,7 @@ class IrrigationService extends ChangeNotifier {
     if (idx != -1) { _zones[idx].name = name; notifyListeners(); }
   }
 
-  // ── Auto-irrigation ───────────────────────────────────────
+  // â”€â”€ Auto-irrigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   bool _autoEnabled = false;
   double _autoThreshold = 25.0;
 
@@ -60,7 +64,7 @@ class IrrigationService extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ── Weather simulation ────────────────────────────────────
+  // â”€â”€ Weather simulation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   String _weatherCondition = 'sunny';
   double _outsideTemp = 22.0;
   bool _willRainToday = false;
@@ -72,10 +76,10 @@ class IrrigationService extends ChangeNotifier {
 
   String get weatherEmoji {
     switch (_weatherCondition) {
-      case 'rainy': return '🌧';
-      case 'cloudy': return '☁️';
-      case 'windy': return '💨';
-      default: return '☀️';
+      case 'rainy': return 'ðŸŒ§';
+      case 'cloudy': return 'â˜ï¸';
+      case 'windy': return 'ðŸ’¨';
+      default: return 'â˜€ï¸';
     }
   }
 
@@ -93,21 +97,21 @@ class IrrigationService extends ChangeNotifier {
     } else {
       _weatherCondition = 'windy';
     }
-    // Vary outside temp by time of day (15-32°C)
+    // Vary outside temp by time of day (15-32Â°C)
     final hour = DateTime.now().hour;
     _outsideTemp = (15.0 + (17.0 * (1.0 - ((hour - 14).abs() / 14.0))).clamp(0.0, 17.0))
         + (rng.nextDouble() - 0.5) * 2;
     notifyListeners();
   }
 
-  // ── Weekly goal ───────────────────────────────────────────
+  // â”€â”€ Weekly goal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   double _weeklyGoal = 100.0;
   void setWeeklyGoal(double goal) { _weeklyGoal = goal; notifyListeners(); }
 
   double get efficiencyScore =>
       (_weeklyGoal > 0 ? (totalWaterThisWeek / _weeklyGoal * 100).clamp(0, 100) : 0);
 
-  // ── Monthly stats ─────────────────────────────────────────
+  // â”€â”€ Monthly stats â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Map<String, double> get monthlyWaterUsage {
     final monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -143,7 +147,7 @@ class IrrigationService extends ChangeNotifier {
     return displayResult;
   }
 
-  // ── Schedules ─────────────────────────────────────────────
+  // â”€â”€ Schedules â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   final List<IrrigationSchedule> _schedules = [
     IrrigationSchedule(
       id: '1', name: 'Morning Cycle',
@@ -160,17 +164,17 @@ class IrrigationService extends ChangeNotifier {
   ];
   List<IrrigationSchedule> get schedules => List.unmodifiable(_schedules);
 
-  // ── History ───────────────────────────────────────────────
+  // â”€â”€ History â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   final List<IrrigationEvent> _history = [];
   List<IrrigationEvent> get history => List.unmodifiable(_history);
 
-  // ── Sensor history for charts ─────────────────────────────
+  // â”€â”€ Sensor history for charts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   final List<SensorData> _sensorHistory = [];
   List<SensorData> get sensorHistory => List.unmodifiable(_sensorHistory);
 
   StreamSubscription? _sensorStream;
 
-  // ═══════════════════════════════════════════════════════════
+  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
   IrrigationService() {
     _generateInitialHistory();
     _startSensorSimulation();
@@ -178,7 +182,7 @@ class IrrigationService extends ChangeNotifier {
     _weatherTimer = Timer.periodic(const Duration(minutes: 5), (_) => _updateWeather());
   }
 
-  // ── Called after login ────────────────────────────────────
+  // â”€â”€ Called after login â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void setUser(String uid) {
     _uid = uid;
     _listenToLatestSensor();
@@ -190,7 +194,7 @@ class IrrigationService extends ChangeNotifier {
     _sensorStream?.cancel();
   }
 
-  // ── Firestore real-time listener ──────────────────────────
+  // â”€â”€ Firestore real-time listener â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _listenToLatestSensor() {
     if (_uid == null) return;
     _sensorStream?.cancel();
@@ -211,7 +215,7 @@ class IrrigationService extends ChangeNotifier {
     });
   }
 
-  // ── Write sensor to Firestore ─────────────────────────────
+  // â”€â”€ Write sensor to Firestore â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _pushSensorToFirestore(SensorData r) async {
     if (_uid == null) return;
     try {
@@ -228,7 +232,7 @@ class IrrigationService extends ChangeNotifier {
     } catch (_) {} // silent if not configured
   }
 
-  // ── Load irrigation events from Firestore ─────────────────
+  // â”€â”€ Load irrigation events from Firestore â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _loadHistoryFromFirestore() async {
     if (_uid == null) return;
     try {
@@ -251,7 +255,7 @@ class IrrigationService extends ChangeNotifier {
     } catch (_) {} // silent if not configured
   }
 
-  // ── Write event to Firestore ──────────────────────────────
+  // â”€â”€ Write event to Firestore â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _pushEventToFirestore(IrrigationEvent e) async {
     if (_uid == null) return;
     try {
@@ -267,7 +271,7 @@ class IrrigationService extends ChangeNotifier {
     } catch (_) {} // silent if not configured
   }
 
-  // ── Sensor simulation ─────────────────────────────────────
+  // â”€â”€ Sensor simulation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _generateInitialHistory() {
     final rng = Random();
     final now = DateTime.now();
@@ -323,7 +327,7 @@ class IrrigationService extends ChangeNotifier {
     });
   }
 
-  // ── Manual control ────────────────────────────────────────
+  // â”€â”€ Manual control â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void startIrrigation({int durationMinutes = 10, String trigger = 'manual'}) {
     if (_isIrrigating) return;
     _isIrrigating = true;
@@ -357,7 +361,7 @@ class IrrigationService extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ── Schedules ─────────────────────────────────────────────
+  // â”€â”€ Schedules â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void addSchedule(IrrigationSchedule s) { _schedules.add(s); notifyListeners(); }
   void toggleSchedule(String id) {
     final idx = _schedules.indexWhere((s) => s.id == id);
@@ -365,7 +369,7 @@ class IrrigationService extends ChangeNotifier {
   }
   void deleteSchedule(String id) { _schedules.removeWhere((s) => s.id == id); notifyListeners(); }
 
-  // ── Stats ─────────────────────────────────────────────────
+  // â”€â”€ Stats â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   double get totalWaterThisWeek {
     final weekAgo = DateTime.now().subtract(const Duration(days: 7));
     return _history.where((e) => e.startTime.isAfter(weekAgo))
@@ -385,3 +389,4 @@ class IrrigationService extends ChangeNotifier {
     super.dispose();
   }
 }
+

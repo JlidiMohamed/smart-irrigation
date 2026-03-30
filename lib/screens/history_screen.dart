@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Mohamed Jlidi. All Rights Reserved.
+// Unauthorized use, copying, or distribution is strictly prohibited.
+// Contact: mohamedjlidi210@gmail.com
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -42,19 +46,19 @@ class _HistoryScreenState extends State<HistoryScreen>
                 ),
                 padding: const EdgeInsets.fromLTRB(20, 52, 20, 0),
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  const Text("📊 Analytics",
+                  const Text("ðŸ“Š Analytics",
                       style: TextStyle(color: Colors.white, fontSize: 22,
                           fontWeight: FontWeight.w900)),
                   const SizedBox(height: 12),
                   // Summary pills
                   Row(children: [
-                    _Pill("💧 ${svc.totalWaterThisWeek.toStringAsFixed(1)}L",
+                    _Pill("ðŸ’§ ${svc.totalWaterThisWeek.toStringAsFixed(1)}L",
                         "This week"),
                     const SizedBox(width: 10),
-                    _Pill("🔄 ${svc.irrigationCountThisWeek}",
+                    _Pill("ðŸ”„ ${svc.irrigationCountThisWeek}",
                         "Sessions"),
                     const SizedBox(width: 10),
-                    _Pill("📈 ${svc.irrigationCountThisWeek > 0 ? (svc.totalWaterThisWeek / svc.irrigationCountThisWeek).toStringAsFixed(1) : '0'}L",
+                    _Pill("ðŸ“ˆ ${svc.irrigationCountThisWeek > 0 ? (svc.totalWaterThisWeek / svc.irrigationCountThisWeek).toStringAsFixed(1) : '0'}L",
                         "Avg/session"),
                   ]),
                 ]),
@@ -67,7 +71,7 @@ class _HistoryScreenState extends State<HistoryScreen>
               labelColor: Colors.white,
               unselectedLabelColor: Colors.white60,
               labelStyle: const TextStyle(fontWeight: FontWeight.w800, fontSize: 13),
-              tabs: const [Tab(text: "📈 Charts"), Tab(text: "🗂 Events")],
+              tabs: const [Tab(text: "ðŸ“ˆ Charts"), Tab(text: "ðŸ—‚ Events")],
             ),
           ),
         ],
@@ -118,19 +122,19 @@ class _ChartsTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        _ChartCard(title: "🌿 Soil Moisture", unit: "%",
+        _ChartCard(title: "ðŸŒ¿ Soil Moisture", unit: "%",
             color: const Color(0xFF22C55E),
             bgColor: context.isDark ? const Color(0xFF122012) : const Color(0xFFF0FDF4),
             spots: data.asMap().entries.map((e) =>
                 FlSpot(e.key.toDouble(), e.value.soilMoisture)).toList()),
         const SizedBox(height: 14),
-        _ChartCard(title: "💧 Humidity", unit: "%",
+        _ChartCard(title: "ðŸ’§ Humidity", unit: "%",
             color: const Color(0xFF0EA5E9),
             bgColor: context.isDark ? const Color(0xFF0D1E2A) : const Color(0xFFF0F9FF),
             spots: data.asMap().entries.map((e) =>
                 FlSpot(e.key.toDouble(), e.value.humidity)).toList()),
         const SizedBox(height: 14),
-        _ChartCard(title: "🌡️ Temperature", unit: "°C",
+        _ChartCard(title: "ðŸŒ¡ï¸ Temperature", unit: "Â°C",
             color: const Color(0xFFF97316),
             bgColor: context.isDark ? const Color(0xFF2A1800) : const Color(0xFFFFF7ED),
             spots: data.asMap().entries.map((e) =>
@@ -163,7 +167,7 @@ class _ChartsTab extends StatelessWidget {
               const SizedBox(height: 4),
               Text('\u20ac${monthlyCost.toStringAsFixed(2)}',
                   style: const TextStyle(color: Color(0xFFF59E0B), fontWeight: FontWeight.w900, fontSize: 22)),
-              Text('This week · ${svc.totalWaterThisWeek.toStringAsFixed(1)}L used',
+              Text('This week Â· ${svc.totalWaterThisWeek.toStringAsFixed(1)}L used',
                   style: TextStyle(color: context.textSecondary, fontSize: 11)),
             ])),
           ]),
@@ -210,9 +214,9 @@ class _ChartCard extends StatelessWidget {
               ? Center(child: Text("No data yet",
                   style: TextStyle(color: Colors.grey.shade400)))
               : LineChart(LineChartData(
-                  minY: 0, maxY: unit == "°C" ? 50 : 100,
+                  minY: 0, maxY: unit == "Â°C" ? 50 : 100,
                   gridData: FlGridData(show: true, drawVerticalLine: false,
-                      horizontalInterval: unit == "°C" ? 12.5 : 25,
+                      horizontalInterval: unit == "Â°C" ? 12.5 : 25,
                       getDrawingHorizontalLine: (_) =>
                           FlLine(color: color.withOpacity(0.1), strokeWidth: 1)),
                   borderData: FlBorderData(show: false),
@@ -245,7 +249,7 @@ class _EventsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     if (svc.history.isEmpty) {
       return Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        const Text("🌵", style: TextStyle(fontSize: 56)),
+        const Text("ðŸŒµ", style: TextStyle(fontSize: 56)),
         const SizedBox(height: 12),
         Text("No sessions yet!", style: TextStyle(
             fontSize: 18, fontWeight: FontWeight.w800, color: context.textPrimary)),
@@ -290,7 +294,7 @@ class _EventsTab extends StatelessWidget {
               final mins = e.endTime.difference(e.startTime).inMinutes;
               final isManual = e.trigger == 'manual';
               final color = isManual ? const Color(0xFF0EA5E9) : const Color(0xFF22C55E);
-              final emoji = isManual ? "👆" : "📅";
+              final emoji = isManual ? "ðŸ‘†" : "ðŸ“…";
 
               return Container(
                 margin: const EdgeInsets.only(bottom: 10),
@@ -413,3 +417,4 @@ class _MonthlyUsageChart extends StatelessWidget {
     );
   }
 }
+
