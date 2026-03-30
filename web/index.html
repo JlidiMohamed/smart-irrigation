@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="irrigation_app">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Custom SVG favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23052E16'/%3E%3Cpath d='M50 20 C50 20 28 45 28 60 C28 72 38 80 50 80 C62 80 72 72 72 60 C72 45 50 20 50 20Z' fill='%2322C55E'/%3E%3Cpath d='M50 35 C50 35 36 52 36 62 C36 69 42 74 50 74' stroke='%2386EFAC' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"/>
+  <meta name="theme-color" content="#052E16"/>
+
+  <title>Smart Irrigation</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- Firebase JS SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"  // Firebase
+}
+
+android {
+    namespace = "com.mohamedjlidi.smartirrigation"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.mohamedjlidi.smartirrigation"
+        minSdk = 23           // Android 6.0+ (Firebase Auth requirement)
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            keyAlias     = System.getenv("KEY_ALIAS")     ?: "upload"
+            keyPassword  = System.getenv("KEY_PASSWORD")  ?: ""
+            storeFile    = System.getenv("STORE_FILE") != null
+                           ? file(System.getenv("STORE_FILE")) : null
+            storePassword = System.getenv("STORE_PASSWORD") ?: ""
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.release
+            minifyEnabled = false
+            shrinkResources = false
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
